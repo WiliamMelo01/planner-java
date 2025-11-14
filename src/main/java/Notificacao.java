@@ -1,18 +1,19 @@
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Random;
+import java.util.UUID;
 
 public class Notificacao {
 
-    private int idNotificacao;
-    private int idUsuario;
-    private int idTarefa;
+    private String idNotificacao;
+    private String idUsuario;
+    private String idTarefa;
     private LocalDateTime dataNotificacao;
     private StatusNotificacao status;
     private Instant dataCriacao;
 
-    public Notificacao(int idUsuario, int idTarefa, LocalDateTime dataNotificacao) {
-        this.idNotificacao = new Random().hashCode();
+    public Notificacao(String idUsuario, String idTarefa, LocalDateTime dataNotificacao) {
+        this.idNotificacao = UUID.randomUUID().toString();
         this.idUsuario = idUsuario;
         this.idTarefa = idTarefa;
         this.dataNotificacao = dataNotificacao;
@@ -21,19 +22,12 @@ public class Notificacao {
     }
 
     public void enviar(){
-        if(new Random().nextBoolean()){
-            System.out.println("✅ Notificação enviada com sucesso!");
-            this.status = StatusNotificacao.ENVIADO;
-            System.out.println(this);
-            return;
-        }
-
-        System.out.println("❌ Ocorreu um erro ao enviar a notificação!");
-        this.status = StatusNotificacao.FALHA;
+        System.out.println("✅ Notificação enviada com sucesso!");
+        this.status = StatusNotificacao.ENVIADO;
         System.out.println(this);
     }
 
-    public int getIdNotificacao() {
+    public String getIdNotificacao() {
         return idNotificacao;
     }
 
@@ -53,21 +47,14 @@ public class Notificacao {
         this.dataNotificacao = dataNotificacao;
     }
 
-    public int getIdTarefa() {
+    public String getIdTarefa() {
         return idTarefa;
     }
 
-    public void setIdTarefa(int idTarefa) {
-        this.idTarefa = idTarefa;
-    }
-
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     @Override
     public String toString() {

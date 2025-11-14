@@ -2,10 +2,11 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Random;
+import java.util.UUID;
 
 public class Tarefa {
 
-    private int idTarefa;
+    private String idTarefa;
     private String titulo;
     private String descricao;
     private LocalDateTime dataLimite;
@@ -14,7 +15,7 @@ public class Tarefa {
     private Instant dataCriacao;
 
     public Tarefa(String titulo, String descricao, Prioridade prioridade, LocalDateTime dataLimite) {
-        this.idTarefa = new Random().hashCode();
+        this.idTarefa = UUID.randomUUID().toString();
         this.titulo = titulo;
         this.descricao = descricao;
         this.prioridade = prioridade;
@@ -24,7 +25,7 @@ public class Tarefa {
     }
 
     public Tarefa(String titulo, String descricao, Prioridade prioridade, LocalDateTime dataLimite, String status) {
-        this.idTarefa = new Random().hashCode();
+        this.idTarefa = UUID.randomUUID().toString();
         this.titulo = titulo;
         this.descricao = descricao;
         this.prioridade = prioridade;
@@ -69,7 +70,7 @@ public class Tarefa {
         this.titulo = titulo;
     }
 
-    public int getIdTarefa() {
+    public String getIdTarefa() {
         return idTarefa;
     }
 
@@ -106,4 +107,4 @@ public class Tarefa {
         return Objects.hash(idTarefa, titulo, descricao, dataLimite, prioridade, status, dataCriacao);
     }
 }
-
+    

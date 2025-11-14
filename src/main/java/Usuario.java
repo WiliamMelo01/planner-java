@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Usuario {
 
-    private int idUsuario;
+    private String idUsuario;
     private String nome;
     private String email;
     private String senha;
@@ -13,7 +13,7 @@ public class Usuario {
     private Set<Notificacao> notificacoes = new HashSet<>();
 
     public Usuario(String nome, String email, String senha) {
-        this.idUsuario = new Random().hashCode();
+        this.idUsuario = UUID.randomUUID().toString();
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -65,7 +65,7 @@ public class Usuario {
 
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
